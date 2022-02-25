@@ -10,6 +10,8 @@ export function middleware(req: NextRequest, res: NextResponse) {
     return new Response("Blocked for legal reasons", { status: 451 });
   }
   return new Response(
-    `Greetings from ${country}, where you are not blocked.${res}`
+    `Greetings from ${country}, where you are not blocked.\n${
+      req.ip
+    }\n${JSON.stringify(req.geo)}\n${JSON.stringify(req)}`
   );
 }
